@@ -2,7 +2,7 @@
  * @Author: 刘林
  * @Date: 2021-04-01 10:44:48
  * @LastEditors: 刘林
- * @LastEditTime: 2021-04-01 16:51:18
+ * @LastEditTime: 2021-04-02 16:44:26
  */
 // import React from 'react';
 // import ReactDOM from 'react-dom';
@@ -24,26 +24,31 @@
 import { initGlobalState, registerMicroApps, setDefaultMountApp, start } from 'qiankun';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './App.js';
 import './index.css';
 
+ReactDOM.render(<App />, document.getElementById('root'));
 
-function Render() {
-  return (
-    <div id="subapp-viewport" />
-  );
-}
 
-function render() {
-  const container = document.getElementById('root');
-  ReactDOM.render(<Render />, container);
-}
+
+
+// function Render() {
+//   return (
+//     <div id="subapp-viewport" />
+//   );
+// }
+
+// function render() {
+//   const container = document.getElementById('root');
+//   ReactDOM.render(<App />, container);
+// }
 
 registerMicroApps([
   {
     name: 'react-webapp',
     entry: '//localhost:3001',
     container: '#subapp-viewport',
-    loader: () => render(),
+    // loader: () => render(),
     activeRule: '/app-react',
     props: { user: 1 }
   }
@@ -64,6 +69,6 @@ setGlobalState({
   },
 });
 
-setDefaultMountApp('/app-react');
+// setDefaultMountApp('/app-react');
 
 start();
