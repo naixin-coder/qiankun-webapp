@@ -2,7 +2,7 @@
  * @Author: 刘林
  * @Date: 2021-04-01 10:44:48
  * @LastEditors: 刘林
- * @LastEditTime: 2021-04-02 16:44:26
+ * @LastEditTime: 2021-04-06 14:56:45
  */
 // import React from 'react';
 // import ReactDOM from 'react-dom';
@@ -51,8 +51,21 @@ registerMicroApps([
     // loader: () => render(),
     activeRule: '/app-react',
     props: { user: 1 }
+  },
+  {
+    name: 'umi-webapp',
+    entry: '//localhost:3002',
+    container: '#subapp-viewport',
+    // loader: () => render(),
+    activeRule: '/app-umi',
+    props: { user: 1 }
   }
-])
+], {
+  beforeLoad: app => console.log('before load', app),
+  beforeMount: [
+    app => console.log('before mount', app),
+  ],
+})
 
 // 设置全局
 
